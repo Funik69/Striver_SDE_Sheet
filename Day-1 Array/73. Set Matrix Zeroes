@@ -1,0 +1,25 @@
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& mx) {
+        int m=mx.size();
+        int n=mx[0].size();
+        vector<pair<int,int>> v;
+        
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(mx[i][j]==0){
+                    v.push_back({i,j});
+                }
+            }
+        }
+        
+        for(auto it:v){
+            for(int i=0;i<m;i++){
+                mx[i][it.second]=0;
+            }
+            for(int j=0;j<n;j++){
+                mx[it.first][j]=0;
+            }
+        }
+        }
+};
