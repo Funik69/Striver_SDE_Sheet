@@ -1,0 +1,32 @@
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& itrvl) {
+        vector<vector<int>> vv;
+        if(itrvl.size()==1) return itrvl;
+        sort(itrvl.begin(),itrvl.end());
+        int s=itrvl[0][0];
+        int e=itrvl[0][1];
+        if(itrvl.size()<3){
+            if(e>=itrvl[1][0]){
+                s=min(s,itrvl[0][0]);
+                e=max(e,itrvl[1][1]);
+                vv.push_back({s,e});
+                return vv;
+            }
+            else return itrvl;
+        }
+        for(int i=1;i<itrvl.size();i++){
+            if(e<itrvl[i][0]){
+                vv.push_back({s,e});
+                s=itrvl[i][0];
+                e=itrvl[i][1];
+            }
+            else{
+                s=min(s,itrvl[i][0]);
+                e=max(e,itrvl[i][1]);
+            }
+        }
+        vv.push_back({s,e});
+        return vv;
+    }
+};
