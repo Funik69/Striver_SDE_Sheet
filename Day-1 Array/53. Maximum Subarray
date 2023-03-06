@@ -1,0 +1,16 @@
+class Solution {
+public:
+    //kadane's algo
+    int maxSubArray(vector<int>& nums) {
+        int cur=INT_MIN;
+        int mx=INT_MIN;
+        for(auto i:nums){
+            if(cur<=0)
+                cur=0;
+            cur+=i;
+            if(cur>=mx)
+               mx=cur;
+                
+        }
+   return mx; }
+};
